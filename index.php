@@ -38,9 +38,16 @@
         $filteredBooks = filter($books, function($book){
             return $book['releaseYear'] === 1967;
         });
+        
+        //it can be array_filter
+        $filteredBooks2 = array_filter($books, function($book){
+            return $book['releaseYear'] === 1967;
+        });
+
+
     ?>
     <ul>
-        <?php foreach($filteredBooks as $book):?>
+        <?php foreach($filteredBooks2 as $book):?>
             <li>
                 <a href="<?= $book['purchaseUrl']; ?>">
                     <?= $book['name']; ?>
