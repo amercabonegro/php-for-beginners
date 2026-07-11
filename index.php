@@ -12,20 +12,22 @@
             [
                 'name' => 'Do androids Dream of Electric Sheep',
                 'author' => 'Philip K. Dick',
-                'purchaseUrl' => 'http://example.com/Philip'
+                'purchaseUrl' => 'http://example.com/Philip',
+                'releaseYear' => 1967,
             ],
             [
                 'name' => 'Project Hail Mary',
                 'author' => 'Andy Weir',
-                'purchaseUrl' => 'http://example.com/Andy'
+                'purchaseUrl' => 'http://example.com/Andy',
+                'releaseYear' => 2000,
             ],
         ];
 
-        $filterByAuthor = function($items, $key, $value){
+        function filter($items, $fn){
             $filteredItems = [];
 
             foreach ($items as $item){
-                if($item[$key] === $value){
+                if($fn($item)){
                     $filteredItems[] = $item;
                 }
             }
@@ -33,7 +35,9 @@
             return $filteredItems;
         };
 
-        $filteredBooks = $filterByAuthor($books, 'author', 'Philip K. Dick');
+        $filteredBooks = filter($books, function($book){
+            return $book['releaseYear'] === 1967;
+        });
     ?>
     <ul>
         <?php foreach($filteredBooks as $book):?>
