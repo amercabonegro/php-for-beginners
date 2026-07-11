@@ -21,11 +21,11 @@
             ],
         ];
 
-        function filterByAuthor($books){
+        function filterByAuthor($books, $author){
             $filteredBooks = [];
 
             foreach ($books as $book){
-                if($book['author'] === 'Philip K. Dick'){
+                if($book['author'] === $author){
                     $filteredBooks[] = $book;
                 }
             }
@@ -34,7 +34,7 @@
         }
     ?>
     <ul>
-        <?php foreach(filterByAuthor($books) as $book):?>
+        <?php foreach(filterByAuthor($books, 'Andy Weir') as $book):?>
             <li>
                 <a href="<?= $book['purchaseUrl']; ?>">
                     <?= $book['name']; ?>
