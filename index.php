@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo</title>
-<body>
-    <h1>Recommended Books</h1>
-
-    <?php
+<?php
         $books = [ 
             [
                 'name' => 'Do androids Dream of Electric Sheep',
@@ -44,16 +35,4 @@
             return $book['releaseYear'] === 1967;
         });
 
-
-    ?>
-    <ul>
-        <?php foreach($filteredBooks2 as $book):?>
-            <li>
-                <a href="<?= $book['purchaseUrl']; ?>">
-                    <?= $book['name']; ?>
-                </a>
-            </li>
-        <?php endforeach;?>
-    </ul>
-</body>
-</html>
+require "index.view.php";
