@@ -1,38 +1,19 @@
 <?php
 require 'functions.php';
+// require 'router.php';
 
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+class Person{
+    public $name;
+    public $age;
 
-// if ($uri === '/'){
-//     require 'controllers/index.php';
-// }elseif ($uri ==='/contact') {
-//     require 'controllers/contact.php';
-// }elseif ($uri ==='/about') {
-//     require 'controllers/about.php';
-// }
-
-$routes = [
-    '/' => 'controllers/index.php',
-    '/contact' => 'controllers/contact.php',
-    '/about' => 'controllers/about.php',
-];
-
-
-
-function routeToController($uri, $routes)
-{
-    if (array_key_exists($uri, $routes)) {
-        require $routes[$uri];
-    } else {
-        abort(404);
-    };
+    public function breathe(){
+        echo $this->name . " is breathing";
+    }
 }
 
-function abort($code)
-{
-    http_response_code($code = 404);
-    require 'views/404.php';
-    die();
-}
+$person = new Person();
 
-routeToController($uri, $routes);
+$person->name = 'John Doe';
+$person->age = 25;
+
+$person->breathe();
